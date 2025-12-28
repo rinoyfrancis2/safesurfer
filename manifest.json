@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "URL Guard",
+  "name": "SafeSurfer",
   "version": "1.0.0",
   "description": "Cybersecurity extension for malware detection and typosquatting protection",
   "permissions": [

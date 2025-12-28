@@ -1,4 +1,4 @@
-// URL Guard Content Script
+// SafeSurfer Content Script
 // Scans page for URLs and highlights suspicious ones
 
 (function() {
@@ -71,8 +71,8 @@
     Object.assign(element.style, style);
 
     // Add tooltip
-    element.setAttribute('data-urlguard-warning', tooltipText);
-    element.title = `[URL Guard Warning] ${tooltipText}`;
+    element.setAttribute('data-safesurfer-warning', tooltipText);
+    element.title = `[SafeSurfer Warning] ${tooltipText}`;
   }
 
   // Remove highlight from element
@@ -82,8 +82,8 @@
       element.style.outline = original.outline;
       element.style.outlineOffset = original.outlineOffset;
       element.style.backgroundColor = original.backgroundColor;
-      element.removeAttribute('data-urlguard-warning');
-      if (element.title.startsWith('[URL Guard Warning]')) {
+      element.removeAttribute('data-safesurfer-warning');
+      if (element.title.startsWith('[SafeSurfer Warning]')) {
         element.title = '';
       }
       highlightedElements.delete(element);
@@ -135,7 +135,7 @@
         }
       }
     } catch (error) {
-      console.error('URL Guard: Error scanning URLs', error);
+      console.error('SafeSurfer: Error scanning URLs', error);
     }
   }
 
@@ -148,7 +148,7 @@
         scanPage();
       }
     } catch (error) {
-      console.error('URL Guard: Error initializing', error);
+      console.error('SafeSurfer: Error initializing', error);
     }
   }
 
@@ -190,8 +190,8 @@
 
     if (hasNewLinks && (settings.malwareScanEnabled || settings.typosquatCheckEnabled)) {
       // Debounce scanning
-      clearTimeout(window.urlGuardScanTimeout);
-      window.urlGuardScanTimeout = setTimeout(scanPage, 500);
+      clearTimeout(window.safeSurferScanTimeout);
+      window.safeSurferScanTimeout = setTimeout(scanPage, 500);
     }
   });
 

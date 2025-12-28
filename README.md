@@ -1,4 +1,4 @@
-# URL Guard
+# SafeSurfer
 
 A cybersecurity browser extension that protects you from malicious URLs and typosquatting attacks.
 
@@ -33,17 +33,17 @@ Checks URLs against 70+ security vendors via VirusTotal:
 2. Open `chrome://extensions` (or `brave://extensions`)
 3. Enable **Developer mode** (toggle in top-right)
 4. Click **Load unpacked**
-5. Select the `url-guard` folder
+5. Select the `safesurfer` folder
 
 ### Firefox
 1. Rename `manifest-firefox.json` to `manifest.json` (backup the original)
 2. Open `about:debugging#/runtime/this-firefox`
 3. Click **Load Temporary Add-on**
-4. Select any file in the `url-guard` folder
+4. Select any file in the `safesurfer` folder
 
 ## Usage
 
-1. Click the URL Guard extension icon
+1. Click the SafeSurfer extension icon
 2. Login with any email/password (mock auth for demo)
 3. **Typosquat Detection** - Enable to detect fake URLs (works immediately, no API needed)
 4. **Malware Scan** - Requires VirusTotal API key:
@@ -54,7 +54,7 @@ Checks URLs against 70+ security vendors via VirusTotal:
 ## Project Structure
 
 ```
-url-guard/
+safesurfer/
 ├── manifest.json              # Chrome/Brave (Manifest V3)
 ├── manifest-firefox.json      # Firefox (Manifest V2)
 ├── popup/

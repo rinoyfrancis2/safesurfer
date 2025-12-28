@@ -1,4 +1,4 @@
-// URL Guard Background Service Worker
+// SafeSurfer Background Service Worker
 // Coordinates between popup and content scripts
 
 // Import libs for service worker context
@@ -28,12 +28,12 @@ let settingsLoadPromise = null;
 async function initSettings() {
   if (settingsLoaded) return;
 
-  const result = await chrome.storage.local.get(['urlguard_settings', 'urlguard_stats']);
-  if (result.urlguard_settings) {
-    settings = result.urlguard_settings;
+  const result = await chrome.storage.local.get(['safesurfer_settings', 'safesurfer_stats']);
+  if (result.safesurfer_settings) {
+    settings = result.safesurfer_settings;
   }
-  if (result.urlguard_stats) {
-    stats = result.urlguard_stats;
+  if (result.safesurfer_stats) {
+    stats = result.safesurfer_stats;
   }
   settingsLoaded = true;
 }
@@ -48,12 +48,12 @@ async function ensureSettingsLoaded() {
 
 // Save settings to storage
 async function saveSettings() {
-  await chrome.storage.local.set({ urlguard_settings: settings });
+  await chrome.storage.local.set({ safesurfer_settings: settings });
 }
 
 // Save stats to storage
 async function saveStats() {
-  await chrome.storage.local.set({ urlguard_stats: stats });
+  await chrome.storage.local.set({ safesurfer_stats: stats });
 }
 
 // Analyze a single URL
@@ -201,6 +201,6 @@ ensureSettingsLoaded();
 // Listen for installation
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === 'install') {
-    console.log('URL Guard installed successfully');
+    console.log('SafeSurfer installed successfully');
   }
 });
