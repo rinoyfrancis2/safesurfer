@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=320">
+  <title>URL Guard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L3 7V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V7L12 2Z" fill="#4a9eff"/>
+          <path d="M10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9L10 17Z" fill="white"/>
+        </svg>
+        <span class="logo-text">URL Guard</span>
+      </div>
+    </header>
+
+    <!-- Login View -->
+    <div id="login-view" class="view">
+      <form id="login-form" class="form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" required>
+        </div>
+        <div id="login-error" class="error-message"></div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboard-view" class="view hidden">
+      <div class="user-info">
+        <span id="user-email">user@example.com</span>
+        <button id="logout-btn" class="btn-link">Logout</button>
+      </div>
+
+      <!-- API Key Section -->
+      <div id="api-key-section" class="section">
+        <div class="section-header">
+          <span>VirusTotal API Key</span>
+          <span id="api-status" class="status-badge">Not set</span>
+        </div>
+        <div class="api-key-input">
+          <input type="password" id="api-key" placeholder="Enter your API key">
+          <button id="save-api-key" class="btn btn-small">Save</button>
+        </div>
+        <p class="hint">Get free key at <a href="https://www.virustotal.com" target="_blank">virustotal.com</a></p>
+      </div>
+
+      <!-- Scan Options -->
+      <div class="section">
+        <div class="section-header">Scan Options</div>
+
+        <div class="toggle-item" id="typosquat-item">
+          <div class="toggle-info">
+            <span class="toggle-label">Typosquat Detection</span>
+            <span class="toggle-desc">Detect fake lookalike URLs (no API needed)</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="typosquat-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item" id="malware-item">
+          <div class="toggle-info">
+            <span class="toggle-label">Malware Scan</span>
+            <span class="toggle-desc" id="malware-desc">Check URLs with VirusTotal</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="malware-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Statistics -->
+      <div class="section stats-section">
+        <div class="stat-item">
+          <span class="stat-value" id="urls-scanned">0</span>
+          <span class="stat-label">URLs Scanned</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value threat" id="threats-found">0</span>
+          <span class="stat-label">Threats Found</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../lib/auth.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

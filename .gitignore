@@ -1,0 +1,25 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Build outputs
+dist/
+build/
+
+# Dependencies (if added later)
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# API keys (never commit these)
+**/api_keys.json
+**/secrets.json
